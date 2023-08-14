@@ -1,44 +1,23 @@
-import React, { useEffect } from 'react';
-import {
-  StatusBar,
-} from 'react-native';
-import LoginScreen from './source/Screens/Login/LoginScreen';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import SplashScreen from 'react-native-splash-screen'
-import { colors } from './source/styles/variables';
-
-const RootStack = createStackNavigator();
-
-const options = {
-  headerShown: false,
-};
+import React, {useEffect} from 'react';
+import LoginScreen from './source/screens/Home/HomeScreen';
+import SplashScreen from 'react-native-splash-screen';
+import {Provider} from 'react-redux';
+import {store, persistor} from './source/store/store';
+import {PersistGate} from 'redux-persist/integration/react';
 
 const App = () => {
-
-  useEffect(()=>{
+  useEffect(() => {
     setTimeout(() => {
       SplashScreen.hide();
     }, 1500);
-  },[])
+  }, []);
 
-  const GetStarted = () => (
-    <RootStack.Navigator screenOptions={options}>
-      <RootStack.Screen name="LoginScreen" component={LoginScreen} />
-    </RootStack.Navigator>
-  );
   return (
-    <NavigationContainer>
-      <StatusBar
-        barStyle="light-content"
-        hidden={false}
-        backgroundColor={colors.primary}
-        translucent={true}
-      />
-      <RootStack.Navigator screenOptions={options}>
-        <RootStack.Screen name="GetStarted" component={GetStarted} />
-      </RootStack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <LoginScreen></LoginScreen>
+      </PersistGate>
+    </Provider>
   );
 };
 
