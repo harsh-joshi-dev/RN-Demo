@@ -33,6 +33,8 @@ const ImageGridItem: React.FC<ImageGridItemProps> = ({
         />
       ))}
 
+      {/* NOTE: I've handled Special this 2 Index images because without this the post is looking bad as per UI */}
+
       {/* Show the fourth image as square if there are exactly 4 images */}
       {images.length === 4 && (
         <ImageItem
@@ -48,7 +50,7 @@ const ImageGridItem: React.FC<ImageGridItemProps> = ({
         <ImageItem
           key={images.length} // Use a unique key
           imageUrl={images[0]} // Use the first image URL
-          width="50%"
+          width="50%" // Width for Individual Image
           height={100}
         />
       )}
