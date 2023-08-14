@@ -17,9 +17,6 @@ npm-cache/
 *.gradle
 .localhistory/
 build/
-android/app/build/
-android/captures/
-android/local.properties
 ios/Pods/
 ios/build/
 expo
