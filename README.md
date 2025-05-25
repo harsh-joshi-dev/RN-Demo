@@ -1,5 +1,5 @@
 
-# Practical Task for TRootech business solutions | React Native test
+# React Naitve
 
 >**Note**: 
 1. Used Latest React Native Version
